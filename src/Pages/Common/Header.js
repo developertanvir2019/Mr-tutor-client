@@ -17,8 +17,8 @@ const Header = () => {
     return (
         <Navbar className='my-nav' expand="lg">
             <Container fluid>
-                <Navbar.Brand><Link to='/'><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-I-51LGfxKAAqiwAFPGOpPgbEhm04kYzQRwjHirmijw&s" alt="" /></Link></Navbar.Brand>
-                <Navbar.Brand> <h4 className='text-white'>Mr Tutor</h4></Navbar.Brand>
+                <Navbar.Brand><Link to='/'><img src="https://c8.alamy.com/comp/2E2PMN6/vector-logo-of-a-tutor-educational-courses-2E2PMN6.jpg" alt="" /></Link></Navbar.Brand>
+                <Navbar.Brand> <h4 className='text-white'>Mr-Tutor</h4></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -27,10 +27,9 @@ const Header = () => {
                         navbarScroll
                     >
                         <Link to={'/'}>Home</Link>
-                        <Link to={'/courses'}>Courses</Link>
-
-                        <Link to={'faq'}> FAQ </Link>
+                        <Link to={'/services'}>Services</Link>
                         <Link to={"blog"}> Blog </Link>
+
                         {/* {
                             user ?
                                 <>

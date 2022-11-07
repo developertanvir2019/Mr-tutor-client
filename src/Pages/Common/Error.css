@@ -1,0 +1,9 @@
+.error {
+    height: 100vh;
+    width: 100%;
+    background-color: #4785FF;
+}
+
+.big-text {
+    font-size: 140px;
+}

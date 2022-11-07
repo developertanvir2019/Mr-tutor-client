@@ -1,9 +1,14 @@
 import React from 'react';
+import './Footer.css'
 
 const Footer = () => {
     return (
-        <div>
-            this is foooter
+        <div className='w-100 d-flex justify-content-center align-items-center footer mt-5'>
+            <div>
+                <h6> Ⓒ All rights reserved by || Tanvir</h6>
+                <h5>Privacy & policy ||  contact with us</h5>
+                <h6>developertanvir2019@gmail.com</h6>
+            </div>
         </div>
     );
 };
