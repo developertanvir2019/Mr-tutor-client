@@ -1,0 +1,27 @@
+.my-nav img {
+    width: 50px;
+}
+
+.my-nav {
+    padding: 0;
+    background-color: #061860;
+    position: sticky !important;
+    top: 0;
+    z-index: 5;
+}
+
+.my-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 500;
+    color: white;
+}
+
+.my-nav button {
+    margin: 0 10px;
+}
+
+.profileimg {
+    width: 50px;
+    border-radius: 50%;
+}

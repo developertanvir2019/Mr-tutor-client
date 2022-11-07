@@ -1,12 +1,12 @@
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import { router } from './extra/Router';
 
 function App() {
 
   return (
     <div className="App">
-      <h1>react router dom</h1>
-      <h1> bootstrap</h1>
-      <h1> firebase authentication</h1>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
