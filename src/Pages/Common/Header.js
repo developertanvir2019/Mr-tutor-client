@@ -29,14 +29,14 @@ const Header = () => {
                     >
                         <Link to={'/'}>Home</Link>
                         <Link to={'/services'}>Services</Link>
-                        <Link to={"blog"}> Blog </Link>
+                        <Link to={"/blog"}> Blog </Link>
 
                         {
                             user ?
                                 <>
 
-                                    <Link>My reviews</Link>
-                                    <Link>Add service</Link>
+                                    <Link to={'/myReviews'}>My reviews</Link>
+                                    <Link to={'/addService'}>Add service</Link>
                                     <Link onClick={handleLogOut} > Logout </Link>
 
                                 </>
