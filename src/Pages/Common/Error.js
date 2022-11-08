@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../extra/useTitle';
 import('./Error.css')
 const Error = () => {
+    useTitle('404')
     return (
         <div className='error d-flex justify-content-center align-items-center'>
             <div>

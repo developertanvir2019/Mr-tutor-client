@@ -6,9 +6,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../extra/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../extra/useTitle';
 import('./Login.css')
 
 const Login = () => {
+    useTitle('login')
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';

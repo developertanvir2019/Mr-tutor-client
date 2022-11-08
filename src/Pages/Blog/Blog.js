@@ -1,7 +1,9 @@
 import React from 'react';
 import { Accordion } from 'react-bootstrap';
+import useTitle from '../../extra/useTitle';
 
 const Blog = () => {
+    useTitle('Blog')
     return (
         <div className='container'>
             <h1 className='my-4 text-primary mb-5'>Some Question</h1>
