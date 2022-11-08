@@ -1,39 +1,43 @@
 
 import Button from 'react-bootstrap/Button';
-// import { FaGoogle } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../extra/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
+import('./Login.css')
 
 const Login = () => {
-    // const navigate = useNavigate();
-    // const location = useLocation();
-    // const from = location.state?.from?.pathname || '/';
-    // const { signIn, googleSign, gitSign } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    const { signIn, googleSign } = useContext(AuthContext)
     const handleSubmit = e => {
-        //     e.preventDefault();
-        //     const form = e.target;
-        //     const email = form.email.value;
-        //     const password = form.password.value;
-        //     signIn(email, password)
-        //         .then(result => {
-        //             const user = result.user;
-        //             console.log(user)
-        //             form.reset();
-        //             navigate(from, { replace: true })
-        //         })
-        //         .catch(err => {
-        //             console.error(err)
-        //         })
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                form.reset();
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }
-    // const provider = new GoogleAuthProvider()
+    const provider = new GoogleAuthProvider()
     const handleGoogle = () => {
-        //     googleSign(provider)
-        //         .then(result => {
-        //             const user = result.user;
-        //             console.log(user)
-        //             navigate(from, { replace: true })
-        //         })
-        //         .catch(err => console.log(err))
+        googleSign(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate(from, { replace: true })
+            })
+            .catch(err => console.log(err))
     }
     return (
         <div>
@@ -55,8 +59,8 @@ const Login = () => {
                 <p className='py-3'>or signup with:</p>
             </Form>
 
-            <div className='pt-5'>
-                {/* <Link onClick={handleGoogle} className='icon-style' >Google Login<FaGoogle ></FaGoogle></Link> <br /> */}
+            <div>
+                <Link onClick={handleGoogle} className='icon-style' >Google Login<FaGoogle ></FaGoogle></Link> <br />
             </div>
         </div>
     );

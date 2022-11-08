@@ -1,56 +1,56 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import { Form } from 'react-router-dom';
+import { useState } from 'react';
+import { useContext } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../extra/AuthProvider';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    const [error, setError] = useState(null);
+
+    const { createUser } = useContext(AuthContext)
+    const handleSubmit = e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('')
+                form.reset();
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                setError(err.message)
+            })
+    }
+
     return (
         <div>
-            <form>
-                <div class="form-outline mb-4">
-                    <input type="email" id="form2Example1" class="form-control" />
-                    <label class="form-label" for="form2Example1">Email address</label>
-                </div>
+            <h1 className='text-primary py-3'>Please Registration from here</h1>
+            <Form onSubmit={handleSubmit} className='w-50 mx-auto mt-5 '>
+                <Form.Label>Email address</Form.Label>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control required name="email" type="email" placeholder="Enter email" />
+                </Form.Group>
 
-                <div class="form-outline mb-4">
-                    <input type="password" id="form2Example2" class="form-control" />
-                    <label class="form-label" for="form2Example2">Password</label>
-                </div>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control required name="password" type="password" placeholder="Password" />
+                </Form.Group>
+                <p className='text-danger'>{error}</p>
+                <p className='text-center my-4'>Already have an account ? <Link to='/login'>Login</Link></p>
+                <Button className='px-5' variant="primary" type="submit">
+                    Registration
+                </Button>
+            </Form>
 
-                <div class="row mb-4">
-                    <div class="col d-flex justify-content-center">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                            <label class="form-check-label" for="form2Example31"> Remember me </label>
-                        </div>
-                    </div>
 
-                    <div class="col">
-                        <a href="#!">Forgot password?</a>
-                    </div>
-                </div>
-
-                <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-                <div class="text-center">
-                    <p>Not a member? <a href="#!">Register</a></p>
-                    <p>or sign up with:</p>
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                        <i class="fab fa-facebook-f"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                        <i class="fab fa-google"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                        <i class="fab fa-twitter"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-link btn-floating mx-1">
-                        <i class="fab fa-github"></i>
-                    </button>
-                </div>
-            </form>
         </div>
     );
 };
