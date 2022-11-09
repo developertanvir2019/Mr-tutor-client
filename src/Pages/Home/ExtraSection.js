@@ -40,12 +40,14 @@ const ExtraSection = () => {
             </div>
 
 
-            <div className='container'>
-                <h1 className='mt-4'>Success Review of <span className='text-info'>scientific</span> Subject.</h1>
-                <ProgressBar label='Mathematics 98%' className='my-4 w-75 h-50 fw-bold fs-5' animated variant="success" now={98} />
-                <ProgressBar label='Physics 95%' className='my-4 w-75 h-50  fw-bold fs-5' animated variant="info" now={95} />
-                <ProgressBar label='Chemistry 90%' className='my-4 w-75 h-50  fw-bold fs-5' animated variant="warning" now={90} />
-                <ProgressBar label='Biology 80%' className='my-4 w-75 h-50  fw-bold fs-5' animated variant="danger" now={80} />
+            <div className='container d-flex justify-content-center align-items-center'>
+                <div>
+                    <h1 className='mt-5 mb-5'>Success Review of <span className='text-info'>scientific</span> Subject.</h1>
+                    <ProgressBar label='Mathematics 98%' className='my-4 w-100 h-50 fw-bold fs-5' animated variant="success" now={98} />
+                    <ProgressBar label='Physics 95%' className='my-4 w-100 h-50  fw-bold fs-5' animated variant="info" now={95} />
+                    <ProgressBar label='Chemistry 90%' className='my-4 w-100 h-50  fw-bold fs-5' animated variant="warning" now={90} />
+                    <ProgressBar label='Biology 80%' className='my-4 w-100 h-50  fw-bold fs-5' animated variant="danger" now={80} />
+                </div>
             </div>
         </div>
     );
