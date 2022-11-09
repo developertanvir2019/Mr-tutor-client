@@ -1,0 +1,6 @@
+.img-banner {
+    filter: brightness(50%);
+    height: 90vh;
+    object-fit: cover;
+
+}
