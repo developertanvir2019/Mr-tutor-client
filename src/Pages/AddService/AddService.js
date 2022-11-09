@@ -26,6 +26,7 @@ const AddService = () => {
             .then(data => {
                 if (data.success) {
                     alert(data.message)
+                    form.reset();
                 }
                 else {
                     alert(data.error)

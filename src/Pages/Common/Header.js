@@ -1,6 +1,6 @@
 
 import { useContext } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../extra/AuthProvider';
 import('./Header.css')
@@ -35,8 +35,8 @@ const Header = () => {
                             user ?
                                 <>
 
-                                    <Link to={'/myReviews'}>My reviews</Link>
                                     <Link to={'/addService'}>Add service</Link>
+                                    <Link to={'/myReviews'}>My reviews</Link>
                                     <Link onClick={handleLogOut} > Logout </Link>
 
                                 </>
