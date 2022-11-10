@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import { Button, Card, Form } from 'react-bootstrap';
+import React, { useContext, useEffect, useState } from 'react';
+import { Button, Card, Form, Table } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../extra/AuthProvider';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import('./ServiceDetails.css')
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext)
@@ -15,6 +16,7 @@ const ServiceDetails = () => {
             review: form.review.value,
             name: user?.displayName ? user.displayName : 'Default user',
             imgUrl: user?.photoURL,
+            productName: singleProduct.name,
             email: user?.email,
             singleProduct: singleProduct,
         }
@@ -43,6 +45,16 @@ const ServiceDetails = () => {
 
     };
 
+
+    const [review, setReview] = useState([])
+    useEffect(() => {
+        fetch(`http://localhost:5000/productReview?productName=${singleProduct.name}`)
+            .then(res => res.json())
+            .then(data => setReview(data))
+    }, [singleProduct?.name])
+
+
+
     return (
         <div className='container'>
             <h1 className='text-info mt-5'>{singleProduct.name} Details</h1>
@@ -68,7 +80,36 @@ const ServiceDetails = () => {
 
             </div>
 
-            {/*  review section  */}
+
+            {/* review show section */}
+            <div>
+
+                <Table className='my-5' striped>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th> Name</th>
+                            <th>Review</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            review.map(re =>
+                                <tr key={re._id}>
+                                    <td><img className='photoImg' src={user?.photoURL ? user?.photoURL : 'https://www.computerhope.com/jargon/g/guest-user.png'} alt="" /></td>
+                                    <td>{re.name}</td>
+                                    <td>{re.review}</td>
+                                </tr>
+                            )
+                        }
+
+                    </tbody>
+                </Table>
+            </div>
+
+
+
+            {/*  review section  add section */}
 
             <div className='bg-light py-5'>
                 <Form onSubmit={handleSubmit}>
