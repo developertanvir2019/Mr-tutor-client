@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useTitle from '../../extra/useTitle';
 import ExtraSection from './ExtraSection';
@@ -29,7 +29,8 @@ const Home = () => {
                                     <Card.Text>
                                         {d?.description.slice(0, 87)}...
                                     </Card.Text>
-                                    <Link className='btn btn-info text-white fw-bold mt-4 px-4'>Details</Link>
+                                    <Card.Title>Price = {d?.price}</Card.Title>
+                                    <Link to={`/services/${d._id}`} className='btn btn-info text-white fw-bold mt-4 px-4'>Details</Link>
                                 </Card.Body>
                             </Card>
 
