@@ -3,6 +3,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useTitle from '../../extra/useTitle';
 import ExtraSection from './ExtraSection';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import Slider from './Slider';
 import('./Home.css')
 
@@ -23,7 +24,12 @@ const Home = () => {
                     {
                         products.map(d => <Col key={d?._id} xs='12' lg='4' md='6'>
                             <Card className='my-3' style={{ width: '18rem' }}>
-                                <Card.Img className='service-img' variant="top" src={d?.imgUrl} />
+                                <PhotoProvider>
+                                    <PhotoView src={d?.imgUrl}>
+
+                                        <Card.Img className='service-img' variant="top" src={d?.imgUrl} />
+                                    </PhotoView>
+                                </PhotoProvider>
                                 <Card.Body>
                                     <Card.Title>{d?.name}</Card.Title>
                                     <Card.Text>

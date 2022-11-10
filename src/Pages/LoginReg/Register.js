@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../extra/AuthProvider';
 import useTitle from '../../extra/useTitle';
 
@@ -36,8 +36,12 @@ const Register = () => {
         <div>
             <h1 className='text-primary py-3'>Please Registration from here</h1>
             <Form onSubmit={handleSubmit} className='w-50 mx-auto mt-5 '>
-                <Form.Label>Email address</Form.Label>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Your name</Form.Label>
+                    <Form.Control name="name" type="text" placeholder="Enter Your name" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
                     <Form.Control required name="email" type="email" placeholder="Enter email" />
                 </Form.Group>
 
