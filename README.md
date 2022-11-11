@@ -1,5 +1,13 @@
 * live site link is : https://silver-blini-ae5dca.netlify.app/
 
+* I used react Bootstrap for design part.
+
+* This website about review of a teacher ..
+
+* For server and Api I use Mongodb ..
+
+* I deploy my website in netlify and add domain in firebase..
+
 
 
 
