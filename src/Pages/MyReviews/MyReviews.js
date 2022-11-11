@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Table } from 'react-bootstrap';
 import { AuthContext } from '../../extra/AuthProvider';
 import useTitle from '../../extra/useTitle';
+import { useNavigate } from 'react-router-dom';
 const MyReviews = () => {
     useTitle('MyReview')
     const [refresh, setrefresh] = useState(true);
@@ -27,6 +28,11 @@ const MyReviews = () => {
                 alert('successFully delete')
             })
             .catch(err => console.log(err.message))
+    }
+
+    const navigate = useNavigate();
+    const handleEdit = (id) => {
+        navigate(`/edit/${id}`)
     }
 
     return (
@@ -55,7 +61,7 @@ const MyReviews = () => {
                                 <td>{re.review}</td>
                                 <td>
                                     <button onClick={() => handleDelete(re._id)} className='btn btn-danger me-2'>Delete</button>
-                                    <button className='btn btn-warning'>Edit</button>
+                                    <button onClick={() => handleEdit(re._id)} className='btn btn-warning'>Edit</button>
                                 </td>
                             </tr>
                         )

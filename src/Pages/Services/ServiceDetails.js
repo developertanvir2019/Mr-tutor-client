@@ -6,6 +6,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import('./ServiceDetails.css')
 
 const ServiceDetails = () => {
+    const [refresh, setrefresh] = useState(true)
     const { user } = useContext(AuthContext)
     const singleProduct = useLoaderData()[0];
     console.log(singleProduct)
@@ -51,8 +52,11 @@ const ServiceDetails = () => {
     useEffect(() => {
         fetch(`https://server11-bice.vercel.app/productReview?productName=${singleProduct.name}`)
             .then(res => res.json())
-            .then(data => setReview(data))
-    }, [singleProduct?.name])
+            .then(data => {
+                setrefresh(!refresh)
+                setReview(data)
+            })
+    }, [refresh])
 
 
 

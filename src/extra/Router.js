@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AddService from "../Pages/AddService/AddService";
 import Blog from "../Pages/Blog/Blog";
 import Error from "../Pages/Common/Error";
+import EditProduct from "../Pages/EditProduct";
 import Home from "../Pages/Home/Home";
 import Main from "../Pages/Layout/Main";
 import Login from "../Pages/LoginReg/Login";
@@ -53,6 +54,11 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://server11-bice.vercel.app/services/${params.id}`),
                 element: <ServiceDetails></ServiceDetails>
             },
+            {
+                path: '/edit/:id',
+                element: <EditProduct></EditProduct>
+            },
+
 
         ]
     }
