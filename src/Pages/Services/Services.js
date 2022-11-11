@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useTitle from '../../extra/useTitle';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
@@ -9,16 +9,25 @@ import('./Services.css')
 
 const Services = () => {
     useTitle('Services');
+    const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/products")
+        fetch("https://server11-bice.vercel.app/products")
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => {
+                setLoading(false)
+                setProducts(data)
+            }
+            )
     }, [])
+
+
+
     return (
         <div className='container'>
+            <h1 className='text-info mt-5 mb-4'>All services</h1>
+            <Spinner className={loading ? 'd-blog' : 'd-none'} animation="border" variant="danger" />
             <Row>
-                <h1 className='text-info mt-5'>All services</h1>
                 {
                     products.map(d => <Col key={d?._id} xs='12' lg='4' md='6'>
                         <Card className='my-3' style={{ width: '18rem' }}>

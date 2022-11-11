@@ -16,7 +16,7 @@ const AddService = () => {
         }
         console.log(service)
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://server11-bice.vercel.app/products', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

@@ -11,7 +11,7 @@ const Home = () => {
     useTitle('Home')
     const [products, setProducts] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/limit")
+        fetch("https://server11-bice.vercel.app/limit")
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

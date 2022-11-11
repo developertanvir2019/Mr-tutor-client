@@ -8,6 +8,7 @@ import('./ServiceDetails.css')
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext)
     const singleProduct = useLoaderData()[0];
+    console.log(singleProduct)
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -22,7 +23,7 @@ const ServiceDetails = () => {
         }
         console.log(reviews)
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://server11-bice.vercel.app/review', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -48,7 +49,7 @@ const ServiceDetails = () => {
 
     const [review, setReview] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/productReview?productName=${singleProduct.name}`)
+        fetch(`https://server11-bice.vercel.app/productReview?productName=${singleProduct.name}`)
             .then(res => res.json())
             .then(data => setReview(data))
     }, [singleProduct?.name])

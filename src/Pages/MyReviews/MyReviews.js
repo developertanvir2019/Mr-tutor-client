@@ -2,18 +2,33 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { Table } from 'react-bootstrap';
 import { AuthContext } from '../../extra/AuthProvider';
 import useTitle from '../../extra/useTitle';
 const MyReviews = () => {
     useTitle('MyReview')
+    const [refresh, setrefresh] = useState(true);
     const { user } = useContext(AuthContext);
     const [review, setReview] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myReview?email=${user.email}`)
+        fetch(`https://server11-bice.vercel.app/myReview?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setReview(data))
-    }, [user?.email])
+    }, [refresh])
+
+
+    const handleDelete = (id) => {
+        fetch(`https://server11-bice.vercel.app/myReview/${id}`, {
+            method: "DELETE",
+        }).then(res => res.json())
+            .then(data => {
+                setrefresh(!refresh)
+                alert('successFully delete')
+            })
+            .catch(err => console.log(err.message))
+    }
+
     return (
         <div className='container'>
 
@@ -38,6 +53,10 @@ const MyReviews = () => {
                                 <td>{re.singleProduct.name}</td>
                                 <td>{re.singleProduct.price}</td>
                                 <td>{re.review}</td>
+                                <td>
+                                    <button onClick={() => handleDelete(re._id)} className='btn btn-danger me-2'>Delete</button>
+                                    <button className='btn btn-warning'>Edit</button>
+                                </td>
                             </tr>
                         )
                     }
